@@ -8,16 +8,12 @@ import { Logout } from "@mui/icons-material";
 
 export const Dashboard = () => {
 
-  // const getDataHandle = () => {
-  //   const isLoggedIn = localStorage.getItem("isLoggedIn"); 
-  //   console.log("isLoggedIn", isLoggedIn);
-  // };
 
   const [todos, setTodos] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [removeData, setRemoveData] =useState(false);
+  // const [remove, setRemove] =useState(localStorage.getItem('removeData') === 'true');
 
-  // localStorage.getItem('removeData') === 'true'
+ 
 
   const navigate = useNavigate();
 
@@ -47,10 +43,7 @@ export const Dashboard = () => {
 
   const logout = () => {
    
-    setRemoveData(true);
-
-    localStorage.setItem('isLogout', 'true');
-    
+    localStorage.removeItem('isLoggedIn');
     navigate("/login");
     
   }
@@ -60,7 +53,7 @@ export const Dashboard = () => {
     <>
     <div className="container">
       <h1>Todo App</h1>
-      {/* <Button sx={{width:'80px', marginBottom:'10px',}} onClick={logout}>Logout</Button> */}
+      <Button sx={{width:'80px', marginBottom:'10px',}} onClick={logout}>Logout</Button>
       
       <TodoForm
         addTodo={addTodo}
